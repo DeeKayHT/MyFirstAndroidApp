@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 
 public class DisplayMessageActivity extends Activity {
@@ -17,6 +19,16 @@ public class DisplayMessageActivity extends Activity {
 		
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		// Get the message from the intent sent by MainActivity
+		Intent intent = getIntent();
+		String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+		
+		TextView textView = new TextView(this);
+		textView.setTextSize(40);
+		textView.setText(message);
+		
+		setContentView(textView);
 	}
 
 	/**
